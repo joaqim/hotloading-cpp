@@ -1,9 +1,9 @@
 #!/bin/sh
 
-set -ev
 
 cd $TRAVIS_BUILD_DIR
-echo "Current directory" `pwd`
+echo "Current directory" $(pwd)
+set -ev
 
 cd build-debug
 cmake -D CMAKE_BUILD_TYPE=Debug ../
