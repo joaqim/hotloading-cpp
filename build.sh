@@ -4,6 +4,11 @@ if [ "$1" == "run" ]; then
 	cd build-debug/apps/
 	./musl_test_main
 	exit $?
+
+elif [ "$1" == "test" ]; then
+	cd build-debug/tests
+	./test_runner
+	exit $?
 fi
 
 set -e

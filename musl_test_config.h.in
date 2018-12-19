@@ -11,5 +11,5 @@
 
 #define musl_test_VERSION_MAJOR @musl_test_VERSION_MAJOR@
 #define musl_test_VERSION_MINOR @musl_test_VERSION_MINOR@
-#define musl_test_VERSION_MICRO @musl_test_VERSION_MICRO@
-#define musl_test_VERSION_STRING "@musl_test_VERSION_MAJOR@.@musl_test_VERSION_MINOR@.@musl_test_VERSION_MICRO@"
+#define musl_test_VERSION_TWEAK @musl_test_VERSION_TWEAK@
+#define musl_test_VERSION_STRING "@musl_test_VERSION_MAJOR@.@musl_test_VERSION_MINOR@.@musl_test_VERSION_TWEAK@"
