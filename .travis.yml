@@ -22,7 +22,7 @@ notifications:
     on_failure: always
 
 before_script:
-    - "mkdir ./${TRAVIS_BUILD_DIR}/build-{debug,opt}"
+    - "mkdir build-{debug,opt}"
 
 install:
     - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
