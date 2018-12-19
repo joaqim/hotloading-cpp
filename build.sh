@@ -6,6 +6,7 @@ if [ "$1" == "run" ]; then
 	exit $?
 fi
 
+set -e
 
 #rm -r build-debug/*
 pushd build-debug

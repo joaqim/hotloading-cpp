@@ -13,3 +13,14 @@ endif()
 if (UNIX AND NOT APPLE) 
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ldl")
 endif()
+
+# spdlog
+add_subdirectory(${CMAKE_SOURCE_DIR}/repos/spdlog ${CMAKE_BINARY_DIR}/spdlog)
+
+if(CMAKE_SYSTEM_NAME STREQUAL "Android")
+	find_library(log-lib log)
+	#NOTE: Link it as to target with spdlog::spdlog
+else()
+	#NOTE: Link to target as spdlog::spdlog
+endif()
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/build-debug/logs")
