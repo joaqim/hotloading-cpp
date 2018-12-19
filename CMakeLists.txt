@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 2.8)
 
 cmake_policy(SET CMP0048 NEW)
 
-project(musl_test VERSION 0.0.1)
+project(musl_test VERSION 0.0.1 LANGUAGES CXX)
 string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWER)
 
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")

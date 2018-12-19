@@ -1,4 +1,4 @@
-include_directories(${PROJECT_SOURCE_DIR}/third_party/catch ${PROJECT_SOURCE_DIR}/src)
+include_directories(${PROJECT_SOURCE_DIR}/third_party/catch2 ${PROJECT_SOURCE_DIR}/src)
 
 if(${PROJECT_NAME}_BUILD_TESTS)
     file(GLOB test_sources *.cpp)

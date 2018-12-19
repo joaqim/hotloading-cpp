@@ -15,7 +15,9 @@ if (UNIX AND NOT APPLE)
 endif()
 
 # spdlog
-add_subdirectory(${CMAKE_SOURCE_DIR}/repos/spdlog ${CMAKE_BINARY_DIR}/spdlog)
+add_subdirectory(
+	${CMAKE_SOURCE_DIR}/repos/spdlog 
+	${CMAKE_BINARY_DIR}/spdlog)
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Android")
 	find_library(log-lib log)
@@ -23,4 +25,15 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Android")
 else()
 	#NOTE: Link to target as spdlog::spdlog
 endif()
+
 file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/build-debug/logs")
+
+# efsw 
+add_subdirectory(
+	${CMAKE_SOURCE_DIR}/third_party/efsw
+       	${CMAKE_BINARY_DIR}/efsw)
+include_directories(${CMAKE_SOURCE_DIR}/third_party/efsw/include)
+
+# Fake It
+include_directories(${CMAKE_SOURCE_DIR}/third_party/FakeIt)
+include_directories(${CMAKE_SOURCE_DIR}/third_party/catch2)

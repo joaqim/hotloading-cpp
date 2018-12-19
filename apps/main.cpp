@@ -29,6 +29,8 @@
 
 #include "unix_game.h"
 
+#include <catch.hpp>
+//#include <fakeit.hpp>
 
 inline uint32
 SafeTruncateUInt64(uint64 Value) {
@@ -221,8 +223,8 @@ int main() {
   void *BaseAddress = (void *)(0);
 #endif
   game_memory GameMemory = {};
-  GameMemory.PersistentStorageSize = Megabytes(150);
-  GameMemory.TransientStorageSize = Megabytes(20);//Gigabytes(1);
+  GameMemory.PersistentStorageSize = Megabytes(4);
+  GameMemory.TransientStorageSize = Megabytes(8);//Gigabytes(1);
 
   uint64 TotalStorageSize = GameMemory.PersistentStorageSize + GameMemory.TransientStorageSize;
   GameMemory.PersistentStorage = mmap(BaseAddress, TotalStorageSize,
