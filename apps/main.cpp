@@ -9,7 +9,7 @@
 
 #include "musl_test_config.h"
 
-#include "Log.h"
+#include <Log.h>
 
 
 #include <dummy.h>
@@ -29,15 +29,8 @@
 
 #include "unix_game.h"
 
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 //#include <fakeit.hpp>
-
-inline uint32
-SafeTruncateUInt64(uint64 Value) {
-	Assert(Value <= 0xFFFFFFFF,"");
-	uint32 Result = (uint32)Value;
-	return(Result);
-}
 
 internal void
 DEBUGPlatformFreeFileMemory(void *Memory) {

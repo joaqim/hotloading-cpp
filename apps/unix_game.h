@@ -1,5 +1,6 @@
-
+#pragma once
 #include <xs/xs_Float.h>
+#include <Log.h>
 #include <iomanip>
 
 typedef void(*PluginFunction)(void);
@@ -22,6 +23,12 @@ typedef void(*GAME_RUN)(game_memory*);
 #define Gigabytes(Value) (Megabytes(Value)*1024LL)
 #define Terabytes(Value) (Gigabytes(Value)*1024LL)
 
+inline uint32
+SafeTruncateUInt64(uint64 Value) {
+	Assert(Value <= 0xFFFFFFFF,"");
+	uint32 Result = (uint32)Value;
+	return(Result);
+}
 
 struct game_state {
   int BlueOffset;

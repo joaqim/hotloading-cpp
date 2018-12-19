@@ -16,8 +16,9 @@ endif()
 
 # spdlog
 add_subdirectory(
-	${CMAKE_SOURCE_DIR}/repos/spdlog 
+	${CMAKE_SOURCE_DIR}/repos/spdlog
 	${CMAKE_BINARY_DIR}/spdlog)
+include_directories(${CMAKE_SOURCE_DIR}/repos/spdlog/include)
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Android")
 	find_library(log-lib log)
