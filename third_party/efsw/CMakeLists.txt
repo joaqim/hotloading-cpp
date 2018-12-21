@@ -2,11 +2,11 @@ project (efsw)
 
 cmake_minimum_required(VERSION 2.8)
 
-option (VERBOSE "Build efsw with verbose mode.")
-option (STATIC_LIB "Build efsw as a static library")
-option (BUILD_TEST_APP "Build the test app")
+option (EFSW_VERBOSE "Build efsw with verbose mode.")
+option (EFSW_STATIC_LIB "Build efsw as a static library")
+option (EFSW_BUILD_TEST_APP "Build the test app")
 
-if (VERBOSE)
+if (EFSW_VERBOSE)
 	add_definitions(-DEFSW_VERBOSE)
 endif()
 
@@ -107,7 +107,7 @@ elseif (${CMAKE_BUILD_TYPE} MATCHES "Release")
 	add_definitions(-DNDEBUG)
 endif()
 
-if (STATIC_LIB)
+if (EFSW_STATIC_LIB)
 	add_library(efsw STATIC ${SRCS})
 else()
 	add_library(efsw SHARED ${SRCS})
@@ -125,7 +125,7 @@ install(TARGETS efsw LIBRARY DESTINATION ${LIB_DESTINATION} ARCHIVE DESTINATION 
 file (GLOB HDRS "include/efsw/*.h" "include/efsw/*.hpp")
 install (FILES ${HDRS} DESTINATION ${CMAKE_INSTALL_PREFIX}/include/efsw)
 
-if (BUILD_TEST_APP)
+if (EFSW_BUILD_TEST_APP)
     add_executable(efsw-test src/test/efsw-test.cpp)
     target_link_libraries(efsw-test efsw)
 endif()

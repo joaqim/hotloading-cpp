@@ -4,6 +4,7 @@
 
 #include <efsw/FileInfo.hpp>
 #include <efsw/FileSystem.hpp>
+#include <limits.h>
 #include <dirent.h>
 #include <unistd.h>
 #include <cstring>

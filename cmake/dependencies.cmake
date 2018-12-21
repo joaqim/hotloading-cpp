@@ -30,6 +30,7 @@ endif()
 file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/build-debug/logs")
 
 # efsw 
+option(EFSW_STATIC_LIB "" ON)
 add_subdirectory(
 	${CMAKE_SOURCE_DIR}/third_party/efsw
        	${CMAKE_BINARY_DIR}/efsw)

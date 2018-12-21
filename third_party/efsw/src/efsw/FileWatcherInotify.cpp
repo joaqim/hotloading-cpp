@@ -4,6 +4,7 @@
 
 #include <unistd.h>
 #include <sys/stat.h>
+#include <sys/select.h> // select(), FD_ZERO etc
 #include <fcntl.h>
 #include <string.h>
 #include <stdio.h>
