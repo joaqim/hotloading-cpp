@@ -1,28 +1,28 @@
 /**
-	@author Martín Lucas Golini
+@author Martín Lucas Golini
 
-	Copyright (c) 2013 Martín Lucas Golini
+Copyright (c) 2013 Martín Lucas Golini
 
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
 
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
 
-	This software is a fork of the "simplefilewatcher" by James Wynn (james@jameswynn.com)
-	http://code.google.com/p/simplefilewatcher/ also MIT licensed.
+This software is a fork of the "simplefilewatcher" by James Wynn (james@jameswynn.com)
+http://code.google.com/p/simplefilewatcher/ also MIT licensed.
 */
 
 #ifndef ESFW_HPP
@@ -32,30 +32,30 @@
 #include <list>
 
 #if defined(_WIN32)
-	#ifdef EFSW_DYNAMIC
-		// Windows platforms
-		#ifdef EFSW_EXPORTS
-			// From DLL side, we must export
-			#define EFSW_API __declspec(dllexport)
-		#else
-			// From client application side, we must import
-			#define EFSW_API __declspec(dllimport)
-		#endif
-	#else
-		// No specific directive needed for static build
-		#ifndef EFSW_API
-		#define EFSW_API
-		#endif
-	#endif
+#ifdef EFSW_DYNAMIC
+  // Windows platforms
+  #ifdef EFSW_EXPORTS
+    // From DLL side, we must export
+    #define EFSW_API __declspec(dllexport)
+  #else
+    // From client application side, we must import
+    #define EFSW_API __declspec(dllimport)
+  #endif
 #else
-	#if ( __GNUC__ >= 4 ) && defined( EFSW_EXPORTS )
-		#define EFSW_API __attribute__ ((visibility("default")))
-	#endif
+  // No specific directive needed for static build
+  #ifndef EFSW_API
+  #define EFSW_API
+  #endif
+#endif
+#else
+#if ( __GNUC__ >= 4 ) && defined( EFSW_EXPORTS )
+  #define EFSW_API __attribute__ ((visibility("default")))
+#endif
 
-	// Other platforms don't need to define anything
-	#ifndef EFSW_API
-	#define EFSW_API
-	#endif
+// Other platforms don't need to define anything
+#ifndef EFSW_API
+#define EFSW_API
+#endif
 #endif
 
 namespace efsw {
@@ -71,17 +71,17 @@ class FileWatchListener;
 /// the deletion of the old file, and one for the creation of the
 /// new file.
 namespace Actions {
-	enum Action
-	{
-		/// Sent when a file is created or renamed
-		Add = 1,
-		/// Sent when a file is deleted or renamed
-		Delete = 2,
-		/// Sent when a file is modified
-		Modified = 3,
-		/// Sent when a file is moved
-		Moved = 4
-	};
+enum Action
+{
+  /// Sent when a file is created or renamed
+  Add = 1,
+  /// Sent when a file is deleted or renamed
+  Delete = 2,
+  /// Sent when a file is modified
+  Modified = 3,
+  /// Sent when a file is moved
+  Moved = 4
+};
 }
 typedef Actions::Action Action;
 

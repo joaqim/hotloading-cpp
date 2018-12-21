@@ -18,19 +18,21 @@ namespace Terrific {
       //NOTE(jq): Doesn't work
                                                                                                                                       /* inline static void toggleCore() {_coreLogger->set_level(spdlog::level::off);}; */
       /* inline static void toggleClient() {_clientLogger->set_level( _bClientEnabled ? spdlog::level::off : spdlog::level::info);}; */
+      static bool isInitialized;
    private:
-				static std::shared_ptr<spdlog::logger> _coreLogger;
-				static std::shared_ptr<spdlog::logger> _clientLogger;
-        static bool _bCoreEnabled;
-        static bool _bClientEnabled;
+      static std::shared_ptr<spdlog::logger> _coreLogger;
+      static std::shared_ptr<spdlog::logger> _clientLogger;
+      static bool _bCoreEnabled;
+      static bool _bClientEnabled;
     };
-	}
+  }
 }
 
+
 #define TERRIFIC_(logger,name,...)                                      \
-    if (::Terrific::Utility::Log::get##logger##Logger()->should_log(spdlog::level::name)) { \
-      ::Terrific::Utility::Log::get##logger##Logger()->name("{}:{}: in function ::{}(): {}", __FILE__,  __LINE__, __FUNCTION__,fmt::format(__VA_ARGS__)); \
-    }
+  if (::Terrific::Utility::Log::get##logger##Logger()->should_log(spdlog::level::name)) { \
+    ::Terrific::Utility::Log::get##logger##Logger()->name("{}:{}: in function ::{}(): {}", __FILE__,  __LINE__, __FUNCTION__,fmt::format(__VA_ARGS__)); \
+  }
 
 #define TERRIFIC_INFO_(logger,name,...)                                 \
   if (::Terrific::Utility::Log::get##logger##Logger()->should_log(spdlog::level::name)) { \
@@ -51,7 +53,7 @@ void __Log_Assert(const char* expr_str, bool expr, const char* file, int line, c
 
 #define GET_MACRO(Expr, Msg) Expr, Msg
 
-#define Assert(Expr, Msg)                    \
+#define Assert(Expr, Msg)                             \
   __Log_Assert(#Expr, Expr, __FILE__, __LINE__, Msg)
 #define MY_ASSERT1(Expr)                        \
   __Log_Assert(#Expr, Expr, __FILE__, __LINE__)
@@ -78,7 +80,7 @@ void __Log_Assert(const char* expr_str, bool expr, const char* file, int line, c
 #define MY_ASSERT_CHOOSE_HELPER2(count) MY_ASSERT##count
 #define MY_ASSERT_CHOOSE_HELPER1(count) MY_ASSERT_CHOOSE_HELPER2(count)
 #define MY_ASSERT_CHOOSE_HELPER(count)  MY_ASSERT_CHOOSE_HELPER1(count)
-#define Assert__(...)                                                     \
+#define Assert__(...)                                                   \
   GET_MACRO(MY_ASSERT_CHOOSE_HELPER(GET_ARG_COUNT(__VA_ARGS__)), (__VA_
 
 #else
