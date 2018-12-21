@@ -1,5 +1,17 @@
 #pragma once
-#include <unix_game.h>
+#include <CommonTypes.h>
+#include <Memory.h>
+
+//#include <Log.h>
+
+#include <iostream>
+#include <dlfcn.h>
+#include <unistd.h> // read()
+//#include <stdlib.h> // free()
+
+#include <sys/types.h>
+#include <sys/stat.h> // struct stat, for open()
+#include <fcntl.h>
 
 struct File {
   uint32 size;
@@ -11,17 +23,19 @@ struct GameCode {
   void *pLibrary = nullptr;
   bool32 isValid = false;
 
-  GAME_INIT Init(game_memory *gameMemory);
-  GAME_DEINIT Deinit(game_memory *gameMemory);
-  GAME_RUN Run(game_memory *gameMemory);
+  //GAME_INIT Init(GameMemory *gameMemory);
+  GAME_INIT init;
+  GAME_DEINIT deinit;
+  GAME_RUN run;
 };
 
-class GameLoader {
+class CodeLoader {
 public:
-  static File read(const char *filename);
-  static void write(const char *filename, const void *memory, const uint32 size);
-  static GameCode load(const char *filename);
-  static void unload(GameCode &code);
+  static File readFile(const char *filename);
+  static bool32 writeFile(const char *filename, const void *memory, const uint32 size);
+  static void freeMemory(void *memory);
+  static GameCode loadCode(const char *filename);
+  static void unloadCode(GameCode &code);
 
 private:
   GameCode _gameCode;

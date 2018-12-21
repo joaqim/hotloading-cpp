@@ -17,5 +17,6 @@ LIST(APPEND LIBRARIES efsw)
 # FakeIt
 #target_include_directories(${PROJECT_NAME_LOWER}_main ${PROJECT_SOURCE_DIR}/third_party/FakeIt)
 
+LIST(APPEND LIBRARIES xs)
 
 target_link_libraries(${PROJECT_NAME_LOWER} ${LIBRARIES})

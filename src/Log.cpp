@@ -8,6 +8,9 @@ namespace Terrific {
 		std::shared_ptr<spdlog::logger> Log::_clientLogger;
 
 		int Log::init() {
+      //_bCoreEnabled = true;
+      //_bClientEnabled = true;
+
       //			spdlog::set_pattern("%^[%L] %^[%T] %n: %v%$");
       //spdlog::set_pattern("%^%L: %^[%T] %n: %v%$");
 

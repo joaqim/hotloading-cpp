@@ -8,15 +8,22 @@
 namespace Terrific {
 	namespace Utility {
 		class Log {
-			public:
-				static int init();
+   public:
+      static int init();
 
-				inline static std::shared_ptr<spdlog::logger> &getCoreLogger() {return _coreLogger; }
-				inline static std::shared_ptr<spdlog::logger> &getClientLogger() {return _clientLogger; }
-			private:
+      inline static std::shared_ptr<spdlog::logger> &getCoreLogger() {return _coreLogger; }
+      inline static std::shared_ptr<spdlog::logger> &getClientLogger() {return _clientLogger; }
+      inline static void toggleClient(bool val) {_clientLogger->set_level( val ? spdlog::level::trace : spdlog::level::off);};
+      inline static void toggleCore(bool val) {_coreLogger->set_level( val ? spdlog::level::trace : spdlog::level::off);};
+      //NOTE(jq): Doesn't work
+                                                                                                                                      /* inline static void toggleCore() {_coreLogger->set_level(spdlog::level::off);}; */
+      /* inline static void toggleClient() {_clientLogger->set_level( _bClientEnabled ? spdlog::level::off : spdlog::level::info);}; */
+   private:
 				static std::shared_ptr<spdlog::logger> _coreLogger;
 				static std::shared_ptr<spdlog::logger> _clientLogger;
-		};
+        static bool _bCoreEnabled;
+        static bool _bClientEnabled;
+    };
 	}
 }
 
@@ -31,6 +38,7 @@ namespace Terrific {
   }
 
 
+#define LOG_F(Function) Function;TERRIFIC_INFO_(Client,info,#Function)
 #define TERRIFIC_INFO(...) TERRIFIC_INFO_(Client,info,__VA_ARGS__)
 #define TERRIFIC_WARNING(...) TERRIFIC_(Client,warn,__VA_ARGS__)
 #define TERRIFIC_ERROR(...) TERRIFIC_(Client,trace,__VA_ARGS__)
@@ -76,6 +84,7 @@ void __Log_Assert(const char* expr_str, bool expr, const char* file, int line, c
 #else
 #define Assert(Expr, Msg) ;
 #endif
+
 
 
 

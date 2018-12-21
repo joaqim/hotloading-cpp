@@ -38,3 +38,8 @@ include_directories(${CMAKE_SOURCE_DIR}/third_party/efsw/include)
 # Fake It
 include_directories(${CMAKE_SOURCE_DIR}/third_party/FakeIt)
 include_directories(${CMAKE_SOURCE_DIR}/third_party/catch2)
+
+# xs_Float
+include_directories(${CMAKE_SOURCE_DIR}/third_party/xs)
+add_library(xs ${CMAKE_SOURCE_DIR}/third_party/xs/xs_Float.cpp)
+

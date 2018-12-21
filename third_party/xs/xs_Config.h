@@ -14,17 +14,18 @@
 // ====================================================================================================================
 #ifndef _xs_Types_
 #define _xs_Types_                  1
-    typedef char                    int8;
-    typedef unsigned char           uint8;
-    typedef short                   int16;
-    typedef unsigned short          uint16;
-    typedef long                    int32;
-    typedef unsigned long           uint32;
-    typedef float                   real32;
-    typedef double                  real64;
+typedef char                    int8;
+typedef unsigned char           uint8;
+typedef short                   int16;
+typedef unsigned short          uint16;
+typedef long                    int32;
+typedef unsigned long           uint32;
+typedef float                   real32;
+typedef long long               int64;
+typedef unsigned long long      uint64;
+typedef double                  real64;
 
-    typedef unsigned long long      uint64;
-    typedef long		    bool32;
+typedef long		    bool32;
 #endif //_xs_Types_
 
 
