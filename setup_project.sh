@@ -1,5 +1,7 @@
 #!/bin/sh
 
+git submodule update --init --recursive
+
 rm -f build-{debug,opt}
 mkdir -p build-{debug,opt}
 
