@@ -6,7 +6,7 @@
 
 #include <sys/mman.h> // nmap, unmap, mprotect
 
-int main() {
+int main() { 
   using Terrific::Utility::Log;
   auto log = Log::init();
 
