@@ -53,7 +53,7 @@ void __Log_Assert(const char* expr_str, bool expr, const char* file, int line, c
 
 #define GET_MACRO(Expr, Msg) Expr, Msg
 
-#define Assert(Expr, Msg)                             \
+#define ASSERT(Expr, Msg)                             \
   __Log_Assert(#Expr, Expr, __FILE__, __LINE__, Msg)
 #define MY_ASSERT1(Expr)                        \
   __Log_Assert(#Expr, Expr, __FILE__, __LINE__)
@@ -80,7 +80,7 @@ void __Log_Assert(const char* expr_str, bool expr, const char* file, int line, c
 #define MY_ASSERT_CHOOSE_HELPER2(count) MY_ASSERT##count
 #define MY_ASSERT_CHOOSE_HELPER1(count) MY_ASSERT_CHOOSE_HELPER2(count)
 #define MY_ASSERT_CHOOSE_HELPER(count)  MY_ASSERT_CHOOSE_HELPER1(count)
-#define Assert__(...)                                                   \
+#define ASSERT__(...)                                                   \
   GET_MACRO(MY_ASSERT_CHOOSE_HELPER(GET_ARG_COUNT(__VA_ARGS__)), (__VA_
 
 #else

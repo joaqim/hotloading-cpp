@@ -12,8 +12,13 @@
 /*
 ** Macro Definitions
 */
+#ifdef DEBUG
+#define Assert(x) ((void)(!(x) && assert_handler(#x, __FILE__, __LINE__) && (HALT(), 1)))
 #define StaticAssert(Condition, Message) static_assert(Condition, #Message);
-
+#else
+#define Assert(x) ((void)sizeof(x))
+#define StaticAssert(Condition, Message) ;
+#endif
 /*
 ** Condition = TRUE is ok, Condition = FALSE is error 
 */
@@ -43,7 +48,6 @@
 #define OS_PRINTF(n,m)
 #endif
 
-
 #define PLATFORM_WIN32 1
 #define PLATFORM_LINUX 2
 #define PLATFORM_KQUEUE 3
@@ -59,7 +63,7 @@
 #if (PLATFORM == PLATFORM_WIN32)
 #include <stdlib.h>
 
-            typedef unsigned __int16 U2;
+typedef unsigned __int16 U2;
 typedef unsigned __int32 U4;
 typedef unsigned __int64 U8;
 
@@ -79,18 +83,11 @@ typedef uint64_t U8;
 #define local_persist static
 #define global_variable static
 
-#if 0
-#define Kilobytes(Value) ((Value)*1024LL)
-#define Megabytes(Value) (Kilobytes(Value)*1024LL)
-#define Gigabytes(Value) (Megabytes(Value)*1024LL)
-#define Terabytes(Value) (Gigabytes(Value)*1024LL)
-#else
 constexpr uint64 Kilobytes(uint64 const value) {return value*1024LL;}
 constexpr uint64 Megabytes(uint64 const value) {return Kilobytes(value)*1024LL;}
 constexpr uint64 Gigabytes(uint64 const value) {return Megabytes(value)*1024LL;}
 constexpr uint64 Terabytes(uint64 const value) {return Gigabytes(value)*1024LL;}
 
-#endif
 /*
 ** Check Sizes
 */
@@ -107,7 +104,7 @@ StaticAssert(sizeof(int64)==sizeof(long long),  Typeint64WrongSize);
 
 inline uint32
 SafeTruncateUInt64(uint64 Value) {
-  //Assert(Value <= 0xFFFFFFFF,"");
+  Assert(Value <= 0xFFFFFFFF);
   uint32 Result = (uint32)Value;
   return(Result);
 }
@@ -125,3 +122,4 @@ SafeTruncateUInt64(uint64 Value) {
 #endif
 
 #endif  /* _CommonTypes_ */
+
