@@ -44,3 +44,19 @@ include_directories(${CMAKE_SOURCE_DIR}/third_party/catch2)
 include_directories(${CMAKE_SOURCE_DIR}/third_party/xs)
 add_library(xs ${CMAKE_SOURCE_DIR}/third_party/xs/xs_Float.cpp)
 
+# Magnum
+find_package(Magnum REQUIRED
+	Sdl2Application
+	GL
+	)
+
+#if(NOT CORRADE_TARGET_ANDROID)
+#find_package(Magnum REQUIRED Sdl2Application)
+#else()
+#find_package(Magnum REQUIRED AndroidApplication)
+#endif()
+
+set_directory_properties(PROPERTIES CORRADE_USE_PEDANTIC_FLAGS ON)
+
+# Corrade 
+#find_package(Corrade REQUIRED Interconnect)

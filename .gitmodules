@@ -4,3 +4,6 @@
 [submodule "repos/FakeIt"]
 	path = repos/FakeIt
 	url = https://github.com/eranpeer/FakeIt
+[submodule "repos/cpp-taskflow"]
+	path = repos/cpp-taskflow
+	url = https://github.com/cpp-taskflow/cpp-taskflow
