@@ -10,6 +10,7 @@
 using namespace Magnum;
 
 class MyApplication: public Platform::Application {
+  typedef Terrific::Utility::Log Log;
  public:
   explicit MyApplication(const Arguments &arguments);
   ~MyApplication();
@@ -17,6 +18,7 @@ class MyApplication: public Platform::Application {
   void drawEvent() override;
   void keyPressEvent(KeyEvent &event) override;
  private:
+  Log _log;
 };
 
 void MyApplication::keyPressEvent(KeyEvent &event) {
@@ -37,7 +39,7 @@ MyApplication::~MyApplication() {
 
 MAGNUM_APPLICATION_MAIN(MyApplication)
 #if 0
-int main() { 
+int main() {
   using Terrific::Utility::Log;
   auto log = Log::init();
 

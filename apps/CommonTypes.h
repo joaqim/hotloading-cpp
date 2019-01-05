@@ -105,7 +105,7 @@ StaticAssert(sizeof(int64)==sizeof(long long),  Typeint64WrongSize);
 inline uint32
 SafeTruncateUInt64(uint64 Value) {
   Assert(Value <= 0xFFFFFFFF);
-  uint32 Result = (uint32)Value;
+  uint32 Result = static_cast<uint32>(Value);
   return(Result);
 }
 
