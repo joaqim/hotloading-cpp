@@ -45,10 +45,7 @@ include_directories(${CMAKE_SOURCE_DIR}/third_party/xs)
 add_library(xs ${CMAKE_SOURCE_DIR}/third_party/xs/xs_Float.cpp)
 
 # Magnum
-find_package(Magnum REQUIRED
-	Sdl2Application
-	GL
-	)
+find_package(Magnum REQUIRED Sdl2Application GL)
 
 #if(NOT CORRADE_TARGET_ANDROID)
 #find_package(Magnum REQUIRED Sdl2Application)

@@ -204,8 +204,8 @@ int main() {
 
   if(lib.init()) {
     lib.isInitialized = true;
-    lib.deinit();
     lib.run();
+    lib.deinit();
   }
 
 
