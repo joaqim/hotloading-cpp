@@ -1,17 +1,15 @@
 cmake_minimum_required (VERSION 2.8)
 
 cmake_policy(SET CMP0048 NEW)
-cmake_policy(SET CMP0028 NEW)
 
-project(musl_test VERSION 0.0.1 LANGUAGES CXX)
+project(megafragma VERSION 0.0.1)
 string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWER)
 
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
-
+set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include_directories(${PROJECT_SOURCE_DIR}/build-debug)
 include_directories(${PROJECT_SOURCE_DIR}/src)

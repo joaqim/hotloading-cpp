@@ -1,7 +1,7 @@
 #!/bin/sh
 
 export WORKDIR=/opt/src
-sudo rm -rf build-musl
+rm -rf build-musl
 
 docker run --rm -it -v "${PWD}":"${WORKDIR}" radupopescu/musl-builder \
     sh -c "cd ${WORKDIR} && mkdir build-musl && cd build-musl && cmake -D CMAKE_EXE_LINKER_FLAGS=\"-static\" ../ && make"

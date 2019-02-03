@@ -2,7 +2,7 @@
 
 if [ "$1" == "run" ]; then
 	cd build-debug/apps/
-	./musl_test_main
+	./megafragma_main
 	exit $?
 
 elif [ "$1" == "test" ]; then
@@ -15,14 +15,8 @@ set -e
 
 #rm -r build-debug/*
 pushd build-debug
-cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug .. 
+cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug ..
 ninja
 
 popd
-
-if [ "$1" == "b-test" ]; then
-	./build.sh test
-	exit $?
-fi
-
 ./build.sh run
